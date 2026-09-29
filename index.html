@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sofía López · Portafolio</title>
+  <meta name="description" content="Portafolio de proyectos de la clase de Interfaces Multimodales.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f7;
+      --text: #1d1d1f;
+      --text-2: #6e6e73;
+      --line: rgba(0, 0, 0, 0.08);
+      --link: #0066cc;
+      --nav-bg: rgba(255, 255, 255, 0.72);
+      --radius: 28px;
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #161617;
+        --text: #f5f5f7;
+        --text-2: #a1a1a6;
+        --line: rgba(255, 255, 255, 0.1);
+        --link: #2997ff;
+        --nav-bg: rgba(22, 22, 23, 0.72);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.47;
+      letter-spacing: -0.011em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .nav-brand { font-weight: 600; }
+    .nav-meta { color: var(--text-2); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 120px 22px 72px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-2);
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: clamp(48px, 9vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+    .hero p {
+      max-width: 620px;
+      margin: 24px auto 0;
+      font-size: clamp(19px, 2.2vw, 24px);
+      color: var(--text-2);
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+    }
+
+    /* ---------- Grid ---------- */
+    .projects {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 22px 120px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    .card:hover {
+      transform: scale(1.015);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+    .card.featured { grid-column: 1 / -1; }
+
+    .card-media {
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      background: var(--grad);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .card.featured .card-media { aspect-ratio: 21 / 9; }
+    .card-media img {
+      border-bottom: 1px solid var(--line);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .card-body { padding: 26px 28px 30px; }
+    .card-tag {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-2);
+    }
+    .card-title {
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+    .card-desc {
+      margin-top: 10px;
+      font-size: 15px;
+      color: var(--text-2);
+    }
+    .card-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--link);
+    }
+    .card-link::after {
+      content: "›";
+      display: inline-block;
+      margin-left: 4px;
+      transition: transform 0.3s var(--ease);
+    }
+    .card:hover .card-link::after { transform: translateX(3px); }
+    .card-link:hover { text-decoration: underline; }
+    .card-link[aria-disabled="true"] {
+      color: var(--text-2);
+      pointer-events: none;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--line);
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 22px 40px;
+      font-size: 12px;
+      color: var(--text-2);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Reveal on scroll ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .card, .card-link::after { transition: none; transform: none; opacity: 1; }
+      .card:hover { transform: none; }
+    }
+
+    @media (max-width: 1024px) {
+      .projects { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 734px) {
+      .hero { padding: 80px 16px 48px; }
+      .projects { grid-template-columns: 1fr; padding: 0 16px 80px; gap: 16px; }
+      .card.featured .card-media { aspect-ratio: 16 / 10; }
+      .card-body { padding: 24px 24px 28px; }
+      .card-title { font-size: 26px; }
+      .nav-inner, footer { padding-left: 16px; padding-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-brand">Sofía López</span>
+      <span class="nav-meta">Interfaces Multimodales</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Interfaces Multimodales</div>
+    <h1>Proyectos.</h1>
+    <p>Doce exploraciones en voz, texto, visión e inteligencia artificial. Diseñadas para sentirse naturales.</p>
+  </header>
+
+  <main class="projects" id="projects"></main>
+
+  <footer>
+    <span>© 2026 Sofía López</span>
+    <span>Universidad EAFIT · Interfaces Multimodales</span>
+  </footer>
+
+  <script>
+    // ============================================================
+    //  EDITA AQUÍ TUS PROYECTOS
+    //  - link:  URL del proyecto (deja "#" mientras no lo tengas)
+    //  - image: ruta o URL de una imagen (deja "" para el degradado)
+    // ============================================================
+    const projects = [
+      {
+        tag: "01 · Voz",
+        title: "Generador de Audio con IA",
+        description: "Convierte texto en voz con distintos idiomas y acentos, con opción de lectura lenta.",
+        link: "https://holaaaa2.streamlit.app/",
+        image: "img/holaaaa2.jpg",
+      },
+      {
+        tag: "02 · Introducción",
+        title: "Hola, soy Sofi",
+        description: "Mi primera app en Streamlit: texto, imágenes, entradas de usuario y diseño en columnas.",
+        link: "https://sofyintro.streamlit.app/",
+        image: "img/sofyintro.jpg",
+      },
+      {
+        tag: "03 · Texto",
+        title: "Sentiméntmetro AI",
+        description: "Analiza el sentimiento de una frase escrita en español y lo interpreta al instante.",
+        link: "https://clase3sep3.streamlit.app/",
+        image: "img/clase3sep3.jpg",
+      },
+      {
+        tag: "04 · Texto",
+        title: "Buscador TF-IDF",
+        description: "Motor de búsqueda que encuentra la respuesta más parecida a tu pregunta usando TF-IDF.",
+        link: "https://clase3sep1.streamlit.app/",
+        image: "img/clase3sep1.jpg",
+      },
+      {
+        tag: "05 · Visión",
+        title: "Clasificador con Teachable Machine",
+        description: "Toma una foto con la cámara y un modelo entrenado en Teachable Machine la identifica.",
+        link: "https://clase3sep.streamlit.app/",
+        image: "img/clase3sep.jpg",
+      },
+      {
+        tag: "06 · Visión",
+        title: "Reconocimiento de Imágenes",
+        description: "Clasificación en tiempo real desde la cámara, un archivo o una URL.",
+        link: "https://clase10sep2.streamlit.app/",
+        image: "img/clase10sep2.jpg",
+      },
+      {
+        tag: "07 · IA generativa",
+        title: "Asistente RAG",
+        description: "Sube un PDF y conversa con su contenido gracias a un modelo de OpenAI.",
+        link: "https://clase24sep.streamlit.app/",
+        image: "img/clase24sep.jpg",
+      },
+      {
+        tag: "08 · Visión + IA",
+        title: "Análisis Inteligente de Imágenes",
+        description: "GPT-4o describe una imagen o responde preguntas específicas sobre ella.",
+        link: "https://clase24sep2.streamlit.app/",
+        image: "img/clase24sep2.jpg",
+      },
+      {
+        tag: "09 · Visión",
+        title: "AI Vision Studio",
+        description: "Detección de objetos con YOLOv5, con ajustes de confianza y umbral IoU.",
+        link: "https://clase10sep.streamlit.app/",
+        image: "img/clase10sep.jpg",
+      },
+      {
+        tag: "10 · Visión + Voz",
+        title: "OCR & Reader Studio",
+        description: "Extrae el texto de una imagen, lo traduce y lo lee en voz alta.",
+        link: "https://otroooo1.streamlit.app/",
+        image: "img/otroooo1.jpg",
+      },
+      {
+        tag: "11 · Visión",
+        title: "Studio OCR",
+        description: "Captura con la cámara, aplica filtros de contraste y extrae el texto en tiempo real.",
+        link: "https://otroooo2.streamlit.app/",
+        image: "img/otroooo2.jpg",
+      },
+      {
+        tag: "12 · Voz",
+        title: "Traductor por Voz",
+        description: "Escucha lo que dices, lo traduce al idioma que elijas y lo reproduce en voz alta.",
+        link: "https://otroooo3.streamlit.app/",
+        image: "img/otroooo3.jpg",
+      },
+    ];
+
+    const gradients = [
+      "linear-gradient(135deg, #5e5ce6, #bf5af2)",
+      "linear-gradient(135deg, #0a84ff, #64d2ff)",
+      "linear-gradient(135deg, #ff375f, #ff9f0a)",
+      "linear-gradient(135deg, #30d158, #64d2ff)",
+      "linear-gradient(135deg, #1d1d1f, #6e6e73)",
+      "linear-gradient(135deg, #ff9f0a, #ffd60a)",
+    ];
+
+    const container = document.getElementById("projects");
+
+    projects.forEach((p, i) => {
+      const card = document.createElement("article");
+      card.className = "card reveal" + (p.featured ? " featured" : "");
+
+      const media = document.createElement("div");
+      media.className = "card-media";
+      media.style.setProperty("--grad", gradients[i % gradients.length]);
+      if (p.image) {
+        const img = document.createElement("img");
+        img.src = p.image;
+        img.alt = p.title;
+        img.loading = "lazy";
+        media.appendChild(img);
+      } else {
+        media.textContent = "Imagen del proyecto";
+      }
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const tag = document.createElement("div");
+      tag.className = "card-tag";
+      tag.textContent = p.tag;
+
+      const title = document.createElement("h2");
+      title.className = "card-title";
+      title.textContent = p.title;
+
+      const desc = document.createElement("p");
+      desc.className = "card-desc";
+      desc.textContent = p.description;
+
+      const link = document.createElement("a");
+      link.className = "card-link";
+      const hasLink = p.link && p.link !== "#";
+      if (hasLink) {
+        link.href = p.link;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "Ver proyecto";
+      } else {
+        link.setAttribute("aria-disabled", "true");
+        link.textContent = "Próximamente";
+      }
+
+      body.append(tag, title, desc, link);
+      card.append(media, body);
+      container.appendChild(card);
+    });
+
+    // Aparición suave al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
