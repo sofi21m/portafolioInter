@@ -13,11 +13,10 @@ st.set_page_config(
 IMG_DIR = Path(__file__).parent / "img"
 
 # ============================================================
-# PROYECTOS
-# - link: URL de la aplicación
+#  PROYECTOS
+# - link: URL de la app
 # - image: nombre del archivo dentro de la carpeta img/
 # ============================================================
-
 PROJECTS = [
     {
         "tag": "01 · Voz",
@@ -103,379 +102,201 @@ PROJECTS = [
         "link": "https://otroooo3.streamlit.app/",
         "image": "otroooo3.jpg",
     },
+    # Nuevos proyectos agregados
     {
-        "tag": "13 · Visión + IA",
-        "title": "Detección de Dígitos Escritos a Mano",
-        "description": "Reconoce números del 0 al 9 dibujados a mano mediante una red neuronal convolucional (CNN) entrenada con MNIST.",
+        "tag": "13 · Audio + IA",
+        "title": "Análisis y Transcripción de Audio",
+        "description": "Procesamiento de archivos de audio para transcripción y extracción automática de ideas clave.",
         "link": "https://clase1octubre.streamlit.app/",
         "image": "clase1octubre.jpg",
     },
     {
-        "tag": "14 · IA generativa",
-        "title": "Tablero Mágico: De Boceto a Imagen",
-        "description": "Transforma dibujos y bocetos realizados a mano en ilustraciones utilizando inteligencia artificial.",
+        "tag": "14 · Multimodal",
+        "title": "Asistente Multimodal",
+        "description": "Integración de múltiples modalidades de entrada para interacción y procesamiento inteligente.",
         "link": "https://clase1octubre2.streamlit.app/",
         "image": "clase1octubre2.jpg",
     },
+    {
+        "tag": "15 · IA Avanzada",
+        "title": "Exploraciones de IA",
+        "description": "Demostración interactiva de conceptos de inteligencia artificial y procesamiento de datos.",
+        "link": "https://2deoctubre2.streamlit.app/",
+        "image": "2deoctubre2.jpg",
+    },
+    {
+        "tag": "16 · IA Generativa",
+        "title": "Procesamiento Interactivo",
+        "description": "Aplicación para la generación y transformación interactiva de contenido asistida por IA.",
+        "link": "https://clase15.streamlit.app/",
+        "image": "clase15.jpg",
+    },
+    {
+        "tag": "17 · Multimodal",
+        "title": "Studio Multimodal",
+        "description": "Flujos de trabajo avanzados combinando visión, voz y modelos del lenguaje.",
+        "link": "https://clase15octubre3.streamlit.app/",
+        "image": "clase15octubre3.jpg",
+    },
 ]
-
-# ============================================================
-# ESTILOS CSS
-# ============================================================
 
 CSS = """
 <style>
 :root {
-    --bg: #ffffff;
-    --surface: #f5f5f7;
-    --text: #1d1d1f;
-    --text-2: #6e6e73;
-    --line: rgba(0, 0, 0, 0.08);
-    --link: #0066cc;
-    --radius: 28px;
-    --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --bg: #ffffff;
+  --surface: #f5f5f7;
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --line: rgba(0, 0, 0, 0.08);
+  --link: #0066cc;
+  --radius: 28px;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Ocultar la interfaz de Streamlit */
-header[data-testid="stHeader"],
-#MainMenu,
-footer,
-[data-testid="stToolbar"],
-[data-testid="stDecoration"],
-[data-testid="stHeaderActionElements"] {
-    display: none !important;
-}
+header[data-testid="stHeader"], #MainMenu, footer, [data-testid="stToolbar"],
+[data-testid="stDecoration"], [data-testid="stHeaderActionElements"] { display: none !important; }
 
-.stApp {
-    background: var(--bg);
-}
-
-.block-container {
-    max-width: 1200px;
-    padding: 0 22px !important;
-}
+.stApp { background: var(--bg); }
+.block-container { max-width: 1200px; padding: 0 22px !important; }
 
 .pf, .pf * {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-        "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-    -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.011em;
-    box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
+  box-sizing: border-box;
 }
+.pf { color: var(--text); line-height: 1.47; }
+.pf a { text-decoration: none; }
 
-.pf {
-    color: var(--text);
-    line-height: 1.47;
-}
-
-.pf a {
-    text-decoration: none;
-}
-
-/* Navegación */
+/* Nav */
 .pf-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 48px;
-    font-size: 13px;
-    border-bottom: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  height: 48px; font-size: 13px; border-bottom: 1px solid var(--line);
 }
+.pf-nav .brand { font-weight: 600; color: var(--text); }
+.pf-nav .meta { color: var(--text-2); }
 
-.pf-nav .brand {
-    font-weight: 600;
-    color: var(--text);
-}
-
-.pf-nav .meta {
-    color: var(--text-2);
-}
-
-/* Portada */
-.pf-hero {
-    padding: 110px 0 72px;
-    text-align: center;
-}
-
-.pf-hero .eyebrow {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text-2);
-    margin-bottom: 12px;
-}
-
+/* Hero */
+.pf-hero { padding: 110px 0 72px; text-align: center; }
+.pf-hero .eyebrow { font-size: 17px; font-weight: 600; color: var(--text-2); margin-bottom: 12px; }
 .pf-hero h1 {
-    font-size: clamp(48px, 9vw, 96px);
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.02;
-    color: var(--text);
-    padding: 0;
-    margin: 0;
+  font-size: clamp(48px, 9vw, 96px); font-weight: 700;
+  letter-spacing: -0.035em; line-height: 1.02; color: var(--text);
+  padding: 0; margin: 0;
 }
-
 .pf-hero p {
-    max-width: 620px;
-    margin: 24px auto 0;
-    font-size: clamp(19px, 2.2vw, 24px);
-    color: var(--text-2);
-    line-height: 1.35;
-    letter-spacing: -0.015em;
+  max-width: 620px; margin: 24px auto 0;
+  font-size: clamp(19px, 2.2vw, 24px); color: var(--text-2);
+  line-height: 1.35; letter-spacing: -0.015em;
 }
 
-/* Cuadrícula de proyectos */
+/* Grid */
 .pf-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding-bottom: 120px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; padding-bottom: 120px;
 }
-
 .pf-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    color: var(--text) !important;
-    transition: transform 0.5s var(--ease),
-                box-shadow 0.5s var(--ease);
-    animation: pf-in 0.8s var(--ease) both;
+  display: flex; flex-direction: column;
+  background: var(--surface); border-radius: var(--radius); overflow: hidden;
+  color: var(--text) !important;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  animation: pf-in 0.8s var(--ease) both;
 }
-
-.pf-card:hover {
-    transform: scale(1.015);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-.pf-media {
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
-}
-
-.pf-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-}
-
-.pf-body {
-    padding: 26px 28px 30px;
-}
-
+.pf-card:hover { transform: scale(1.015); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); }
+.pf-media { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); }
+.pf-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.pf-body { padding: 26px 28px 30px; }
 .pf-tag {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-2);
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-2);
 }
-
 .pf-title {
-    margin-top: 8px;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    color: var(--text);
+  margin-top: 8px; font-size: 24px; font-weight: 700;
+  letter-spacing: -0.025em; line-height: 1.1; color: var(--text);
 }
-
-.pf-desc {
-    margin-top: 10px;
-    font-size: 15px;
-    color: var(--text-2);
-}
-
-.pf-link {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 15px;
-    color: var(--link);
-}
-
+.pf-desc { margin-top: 10px; font-size: 15px; color: var(--text-2); }
+.pf-link { display: inline-block; margin-top: 16px; font-size: 15px; color: var(--link); }
 .pf-link::after {
-    content: "›";
-    display: inline-block;
-    margin-left: 4px;
-    transition: transform 0.3s var(--ease);
+  content: "›"; display: inline-block; margin-left: 4px;
+  transition: transform 0.3s var(--ease);
 }
+.pf-card:hover .pf-link { text-decoration: underline; }
+.pf-card:hover .pf-link::after { transform: translateX(3px); }
 
-.pf-card:hover .pf-link {
-    text-decoration: underline;
-}
-
-.pf-card:hover .pf-link::after {
-    transform: translateX(3px);
-}
-
-/* Pie de página */
+/* Footer */
 .pf-footer {
-    border-top: 1px solid var(--line);
-    padding: 24px 0 40px;
-    font-size: 12px;
-    color: var(--text-2);
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+  border-top: 1px solid var(--line); padding: 24px 0 40px;
+  font-size: 12px; color: var(--text-2);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
 
-/* Animaciones */
 @keyframes pf-in {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .pf-card, .pf-link::after {
-        animation: none;
-        transition: none;
-    }
-
-    .pf-card:hover {
-        transform: none;
-    }
+  .pf-card, .pf-link::after { animation: none; transition: none; }
+  .pf-card:hover { transform: none; }
 }
 
-/* Tabletas */
-@media (max-width: 1024px) {
-    .pf-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+@media (max-width: 1024px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
 
-/* Celulares */
 @media (max-width: 734px) {
-    .block-container {
-        padding: 0 16px !important;
-    }
-
-    .pf-hero {
-        padding: 72px 0 48px;
-    }
-
-    .pf-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding-bottom: 80px;
-    }
-
-    .pf-body {
-        padding: 24px 24px 28px;
-    }
-
-    .pf-title {
-        font-size: 22px;
-    }
+  .block-container { padding: 0 16px !important; }
+  .pf-hero { padding: 72px 0 48px; }
+  .pf-grid { grid-template-columns: 1fr; gap: 16px; padding-bottom: 80px; }
+  .pf-body { padding: 24px 24px 28px; }
+  .pf-title { font-size: 22px; }
 }
 </style>
 """
 
-# ============================================================
-# CARGA DE IMÁGENES
-# ============================================================
 
 @st.cache_data
 def image_data_uri(filename: str) -> str:
-    image_path = IMG_DIR / filename
+    path = IMG_DIR / filename
+    if path.exists():
+        data = path.read_bytes()
+        return "data:image/jpeg;base64," + base64.b64encode(data).decode()
+    # Imagen de respaldo dinámicas si aún no has guardado las capturas en img/
+    return f"https://placehold.co/600x375/f5f5f7/1d1d1f?text={filename.split('.')[0]}"
 
-    if not image_path.is_file():
-        return ""
-
-    data = image_path.read_bytes()
-    extension = image_path.suffix.lower()
-
-    mime_types = {
-        ".jpg": "image/jpeg",
-        ".jpeg": "image/jpeg",
-        ".png": "image/png",
-        ".webp": "image/webp",
-    }
-
-    mime_type = mime_types.get(extension, "image/jpeg")
-
-    return (
-        f"data:{mime_type};base64,"
-        + base64.b64encode(data).decode("utf-8")
-    )
-
-
-# ============================================================
-# TARJETAS DE PROYECTOS
-# ============================================================
 
 def card(p: dict, i: int) -> str:
-    image_uri = image_data_uri(p["image"])
-
-    if image_uri:
-        image_html = (
-            f'<img src="{image_uri}" '
-            f'alt="{p["title"]}" loading="lazy">'
-        )
-    else:
-        image_html = (
-            '<div style="display:flex;align-items:center;'
-            'justify-content:center;height:100%;min-height:180px;'
-            'color:#6e6e73;font-size:14px;">'
-            'Imagen próximamente'
-            '</div>'
-        )
-
     return (
-        f'<a class="pf-card" href="{p["link"]}" '
-        f'target="_blank" rel="noopener noreferrer" '
+        f'<a class="pf-card" href="{p["link"]}" target="_blank" rel="noopener" '
         f'style="animation-delay:{i * 60}ms">'
-        f'<div class="pf-media">{image_html}</div>'
+        f'<div class="pf-media"><img src="{image_data_uri(p["image"])}" alt="{p["title"]}" loading="lazy"></div>'
         f'<div class="pf-body">'
         f'<div class="pf-tag">{p["tag"]}</div>'
         f'<div class="pf-title">{p["title"]}</div>'
         f'<div class="pf-desc">{p["description"]}</div>'
         f'<span class="pf-link">Ver proyecto</span>'
-        f'</div>'
-        f'</a>'
+        f"</div></a>"
     )
 
 
-# ============================================================
-# CONSTRUCCIÓN DE LA PÁGINA
-# ============================================================
-
 st.markdown(CSS, unsafe_allow_html=True)
+
+total_projects = len(PROJECTS)
 
 page = (
     '<div class="pf">'
-
-    '<nav class="pf-nav">'
-    '<span class="brand">Sofía López</span>'
-    '<span class="meta">Interfaces Multimodales</span>'
-    '</nav>'
-
+    '<nav class="pf-nav"><span class="brand">Sofía López</span>'
+    '<span class="meta">Interfaces Multimodales</span></nav>'
     '<header class="pf-hero">'
     '<div class="eyebrow">Interfaces Multimodales</div>'
-    '<h1>Proyectos.</h1>'
-    '<p>Doce exploraciones en voz, texto, visión e inteligencia artificial. '
-    'Diseñadas para sentirse naturales.</p>'
-    '</header>'
-
-    '<main class="pf-grid">'
-    + "".join(card(p, i) for i, p in enumerate(PROJECTS))
-    + '</main>'
-
-    '<div class="pf-footer">'
-    '<span>© 2026 Sofía López</span>'
-    '<span>Universidad EAFIT · Interfaces Multimodales</span>'
-    '</div>'
-
-    '</div>'
+    "<h1>Proyectos.</h1>"
+    f"<p>{total_projects} exploraciones en voz, texto, visión e inteligencia artificial. "
+    "Diseñadas para sentirse naturales.</p>"
+    "</header>"
+    '<main class="pf-grid">' + "".join(card(p, i) for i, p in enumerate(PROJECTS)) + "</main>"
+    '<div class="pf-footer"><span>© 2026 Sofía López</span>'
+    "<span>Universidad EAFIT · Interfaces Multimodales</span></div>"
+    "</div>"
 )
 
 st.markdown(page, unsafe_allow_html=True)
